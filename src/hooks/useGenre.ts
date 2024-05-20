@@ -8,8 +8,8 @@ export interface Genre {
   name: string;
   image_background: string;
 }
-// const useGenre = () => ({data:null,isLoading:false,error:null});
-const useGenre = () => useData<Genre>("/genres");
+const useGenre = () => ({ data: genres, isLoading: false, error: null });
+// const useGenre = () => useData<Genre>("/genres");
 //{
 //   const [genres, setGenres] = useState<Genre[]>([]);
 //   const [error, setError] = useState("");
