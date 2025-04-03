@@ -1,14 +1,18 @@
-// import React, { useEffect, useState } from "react";
-// import apiClient from "../services/api-client";
-// import { CanceledError } from "axios";
-import useData from "./useData";
+import ApiClient from "../services/api-client";
 import genres from "../data/genres";
-export interface Genre {
-  id: number;
-  name: string;
-  image_background: string;
-}
-const useGenre = () => ({ data: genres, isLoading: false, error: null });
+import { useQuery } from "@tanstack/react-query";
+import ms from 'ms';
+import { Genre } from "../entities/Genre";
+const apiClient = new ApiClient<Genre>('/genres');
+
+const useGenre = () =>
+  useQuery({
+    queryKey: ["genres"],
+    queryFn: apiClient.getAll,
+    staleTime: ms('24h'),
+    initialData: genres,
+  });
+// const useGenre = () => ({ data: genres, isLoading: false, error: null });
 // const useGenre = () => useData<Genre>("/genres");
 //{
 //   const [genres, setGenres] = useState<Genre[]>([]);

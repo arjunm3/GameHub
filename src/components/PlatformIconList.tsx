@@ -1,5 +1,5 @@
 import React from 'react'
-import { Platform } from '../hooks/useGames'
+import { Platform } from "../entities/Platform";
 import { HStack, Icon, SimpleGrid, Text } from '@chakra-ui/react';
 import { FaWindows, FaPlaystation, FaXbox, FaApple, FaLinux, FaAndroid } from 'react-icons/fa';
 import { MdPhoneIphone } from 'react-icons/md';
@@ -23,7 +23,7 @@ const PlatformIconList = ({ platforms }: Props) => {
         web: BsGlobe
     }
     return (
-        <HStack marginY={1}>
+        <HStack marginY={1} flexWrap='wrap'>
             {platforms.map((platform) => <Icon key={platform.id} as={iconMap[platform.slug]} color='gray.500'></Icon>)}
         </HStack>
     )
